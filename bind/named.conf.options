@@ -1,0 +1,7 @@
+options {
+        directory "/var/cache/bind";
+        listen-on port 53 {any; };   # 此处填写ns1的内网IP地址。仅在内网监听
+        dnssec-validation auto;
+        auth-nxdomain no;    # conform to RFC1035
+        listen-on-v6 { any; };
+};

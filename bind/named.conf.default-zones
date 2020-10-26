@@ -1,0 +1,4 @@
+zone "." {
+        type master;
+        file "/etc/bind/any.zone";    #指明区域记录文件的位置
+};
