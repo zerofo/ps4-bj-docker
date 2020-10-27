@@ -27,6 +27,6 @@ RUN mkdir -p /var/cache/bind && \
       /etc/bind/named.conf /etc/bind/named.conf.default-zones /etc/bind/named.conf.options \
       /etc/bind/any.zone
 EXPOSE 53/udp 53/tcp
-CMD ["/bin/bash","/entrypoint.sh"]
-ENTRYPOINT ["/bin/bash","/crond.sh"]
+RUN echo -e '/bin/bash /entrypoint.sh\n/bin/bash /crond.sh' > /begin.sh
+ENTRYPOINT ["/bin/bash","/begin.sh"]
 

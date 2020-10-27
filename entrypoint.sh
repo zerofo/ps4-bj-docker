@@ -66,4 +66,4 @@ fi
 
 # Start BIND
 echo "[-] BIND Starting..."
-named -c /etc/bind/named.conf -u named
+named -c /etc/bind/named.conf -u named&
