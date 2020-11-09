@@ -1,11 +1,10 @@
 From nginx:alpine
-#RUN  sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories 
-RUN  apk add --no-cache git bash
+#RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories 
+RUN apk add --no-cache git bash
 RUN touch /start.sh
 RUN git config --global user.name scjtqs && git config --global user.email scjtqs@qq.com
 RUN echo "cd /usr/share/nginx/html && git fetch --all && git reset --hard origin/master && git pull -f">>/start.sh
 RUN chmod 777 /start.sh
-
 RUN rm -rf /usr/share/nginx/html
 RUN git clone --depth 1 https://github.com/zerofo/zerofo.github.io.git /usr/share/nginx/html
 RUN sed -i "5a <script>if((document.location.pathname!='/index.html')&&(document.location.pathname != '/')){window.location.href='http://'+document.location.host;}</script>" /usr/share/nginx/html/index.html
@@ -27,6 +26,6 @@ RUN mkdir -p /var/cache/bind && \
       /etc/bind/named.conf /etc/bind/named.conf.default-zones /etc/bind/named.conf.options \
       /etc/bind/any.zone
 EXPOSE 53/udp 53/tcp
-RUN echo -e '/bin/bash /entrypoint.sh\n/bin/bash /crond.sh' > /begin.sh
+RUN echo -e '/bin/bash /entrypoint.sh\n/bin/bash /crond.sh;' > /begin.sh
 ENTRYPOINT ["/bin/bash","/begin.sh"]
 
