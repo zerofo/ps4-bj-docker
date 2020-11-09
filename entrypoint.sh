@@ -43,7 +43,6 @@ fi
 #python3 /opt/dns-config-watchdog/main.py --watchdog &
 
 # Replace ${IPV4} and ${IPV6} in `/etc/bind/named.conf.options`
-#echo "[-] Replacing IP addresses in \`/etc/bind/named.conf.options\`..."
 if [ "$SKIP_IPV4" != "false" ]; then
   echo "[!] Skipping IPv4 support"
 elif [ -n "$IPV4" ]; then
